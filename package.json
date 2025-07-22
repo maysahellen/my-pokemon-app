@@ -5,27 +5,36 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "test": "vue-cli-service test:unit --coverage",
     "lint": "vue-cli-service lint",
-    "test": "jest"
+    "test:mutation": "cross-env BABEL_ENV=test VUE_CLI_TRANSPILE_BABEL_RUNTIME=true VUE_CLI_BABEL_TARGET_NODE=true VUE_CLI_BABEL_TRANSPILE_MODULES=true stryker run"
   },
   "dependencies": {
-    "axios": "^1.10.0",
+    "axios": "^0.27.2",
     "core-js": "^3.8.3",
-    "vue": "^2.6.14"
+    "vue": "^2.6.14",
+    "vue-router": "^3.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
     "@babel/eslint-parser": "^7.12.16",
-    "@babel/preset-env": "^7.28.0",
-    "@stryker-mutator/core": "^5.6.1",
-    "@stryker-mutator/jest-runner": "^5.6.1",
+    "@babel/preset-env": "^7.18.6",
+    "@stryker-mutator/core": "^6.1.2",
+    "@stryker-mutator/jest-runner": "^6.1.2",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-unit-jest": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
-    "babel-jest": "^30.0.4",
+    "@vue/test-utils": "^1.3.0",
+    "@vue/vue2-jest": "^28.0.1",
+    "babel-jest": "^28.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
     "jest": "^27.5.1",
+    "vue-jest": "^3.0.7",
     "vue-template-compiler": "^2.6.14"
   },
   "eslintConfig": {
@@ -40,11 +49,25 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {},
+    "overrides": [
+      {
+        "files": [
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
+        ],
+        "env": {
+          "jest": true
+        }
+      }
+    ]
   },
   "browserslist": [
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "jest": {
+    "preset": "@vue/cli-plugin-unit-jest"
+  }
 }
