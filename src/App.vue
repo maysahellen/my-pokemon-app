@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { chamarApi } from './gateways/gateway';
+import { callApi } from './gateways/gateway';
 
 export default {
   name: 'App',
@@ -21,7 +21,7 @@ export default {
   }),
 
   async mounted(){
-    this.pokemons = await chamarApi();
+    this.pokemons = await callApi();
   }
 };
 </script>

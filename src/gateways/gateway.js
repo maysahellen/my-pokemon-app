@@ -1,12 +1,9 @@
 import axios from 'axios';
 
-export async function chamarApi() {
-    try {
-        const resposta = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=30&offset=0");
-        const pokemon = resposta.data.results;
+const API = "https://pokeapi.co/api/v2/pokemon?limit=30&offset=0";
+
+export async function callApi() {
+        const response = await axios.get(API);
+        const pokemon = response.data.results;
         return pokemon;
-    }
-    catch (erro) {
-        throw new Error("Ocorreu um erro durante a chamada da API");
-    }
 }
