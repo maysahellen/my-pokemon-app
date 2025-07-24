@@ -1,18 +1,16 @@
 module.exports = {
-  mutate: [
-      'src/**/*.vue',
-      'src/**/*.js'
-  ],
-  testRunner: 'jest',
-  reporters: ['html', 'progress'],
-  jest: {
-      projectType: 'custom',
-      config: {
-          testEnvironment: 'jsdom',
-          transform: {
-              '^.+\\.vue$': 'vue-jest',
-              '^.+\\.js$': 'babel-jest',
-          }
-      },
-  },
-};
+    "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
+    "mutator": {
+      "plugins": []
+    },
+    "mutate": [
+      "src/**/*.js",
+      "src/**/*.vue",
+      "!src/router/index.js",
+      "!src/main.js"
+    ],
+    "tempDirName_comment": "Jest doesn't play nice with the default (.stryker-tmp).",
+    "tempDirName": "stryker-tmp",
+    "testRunner": "jest",
+    "coverageAnalysis": "off"
+  }
