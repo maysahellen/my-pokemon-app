@@ -1,22 +1,29 @@
-import router from "../router.js"; // arquivo das rotas
-import PokemonView from "@/views/PokemonView.vue"; // componente pai da rota que vai ser testada
-import { mount } from "@vue/test-utils"; // essa funcao permite montar componentes para teste
-import App from "@/App.vue";
-
+import Router from 'vue-router'
+import router from '../router.js'
+import PokemonView from '@/views/PokemonView.vue'
+import { createLocalVue } from '@vue/test-utils' // funcao que cria instancia local do vue
+ 
 describe('when /pokemon is accessed', () => {
-
-    let wrapper; // guarda componente montado no teste
-
-    beforeEach(async () => {
-        wrapper = mount(App, { // monta o componente pai da aplicacao 
-            global: {
-                plugins: [router] // para o App usar o router
-            }
-        })
-        await router.push('/pokemon'); // simula a navegacao para a rota
+ 
+    const localVue = createLocalVue(); // cria nova instancia do vue para o teste
+    localVue.use(Router); // para a instancia do vue usar o vue-router
+    let routes; // armazena rotas
+    let pokemonRoute;
+ 
+    beforeEach(() => {
+        routes = router.options.routes; // armazena o array de rotas da aplicacao
+        pokemonRoute = routes.find(route => route.path === '/pokemon');
     })
-
-    it('then the PokemonView component is rendered', async () => {
-        expected(wrapper.findComponent(PokemonView).exists()).toBe(true); // o componente pai da rota testada deve estar presente no componente montado no spec
+ 
+    it('then the route was defined', () => {
+        expect(pokemonRoute).toBeDefined(); // confere se a rota foi definida
+    })
+ 
+    it('then the name of the route is pokemon', () => {
+        expect(pokemonRoute.name).toBe('pokemon'); // confere se o nome está certo
+    })
+ 
+    it('then the route component is', () => {
+        expect(pokemonRoute.component).toBe(PokemonView); // confere se o componente está certo
     })
 })
