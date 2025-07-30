@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-      <router-view></router-view>
-      <div v-for="pokemon in pokemons" :key="pokemon.name">
-        {{ pokemon.name }}
-      </div>
+    <router-view></router-view>
+    <div v-for="pokemon in pokemons" :key="pokemon.name">
+      {{ pokemon.name }}
+    </div>
   </div>
 </template>
 

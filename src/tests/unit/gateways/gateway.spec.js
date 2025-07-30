@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { callApi } from '../../gateways/gateway';
+import { callApi } from '../../../gateways/gateway';
 
 jest.mock('axios');
 
