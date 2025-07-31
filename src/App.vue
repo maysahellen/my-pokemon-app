@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <img src="./assets/image 1.svg" alt="title" class="title">
     <router-view></router-view>
     <div v-for="pokemon in pokemons" :key="pokemon.name">
       {{ pokemon.name }}
@@ -35,5 +36,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+.title {
+  margin-top: 21px;
 }
 </style>

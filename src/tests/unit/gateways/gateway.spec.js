@@ -3,9 +3,9 @@ import { callApi } from '../../../gateways/gateway';
 
 jest.mock('axios');
 
-describe("when callApi is called", () => {
+describe("Given callApi", () => {
 
-    describe('and the API is accessed', () => {
+    describe('When the API is accessed', () => {
 
         let mockPokemons;
         let pokemons;
@@ -22,18 +22,12 @@ describe("when callApi is called", () => {
             pokemons = await callApi(); 
         });
 
-        it('then HTTPClient.get is called with correct params', async () => {
+        it('Then HTTPClient.get is called with correct params', async () => {
             expect(axios.get).toHaveBeenCalledWith("https://pokeapi.co/api/v2/pokemon?limit=30&offset=0"); 
         });
 
-        it('then return pokemon data', async () => {
-
-            const expectedPokemons = Array.from({ length: 30 }, (_, index) => ({ 
-                name: 'pokemon' + (index + 1),
-                url: 'https://pokeapi.co/api/v2/pokemon/' + (index + 1),
-            }));
-
-            expect(pokemons).toEqual(expectedPokemons);
+        it('Then return pokemon data', async () => {
+            expect(pokemons).toEqual(mockPokemons);
         });
-    })
+    });
 });

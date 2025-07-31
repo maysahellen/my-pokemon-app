@@ -8,6 +8,10 @@ export default new Router({
     mode: 'history',
     routes: [
         {
+            path: '/',
+            redirect: '/pokemon'
+        },
+        {
             path: '/pokemon',
             name: 'pokemon',
             component: PokemonView
