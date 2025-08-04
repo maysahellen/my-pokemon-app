@@ -1,21 +1,23 @@
 <template>
   <div id="app">
-    <img src="./assets/image 1.svg" alt="title" class="title">
+    <img src="./assets/image 1.svg" alt="title">
+    <loading-component/>
     <router-view></router-view>
-    <div v-for="pokemon in pokemons" :key="pokemon.name">
+    <!-- <div v-for="pokemon in pokemons" :key="pokemon.name">
       {{ pokemon.name }}
-    </div>
+    </div>  -->
   </div>
 </template>
 
 <script>
 import { callApi } from './gateways/gateway';
+import LoadingComponent from './components/LoadingComponent.vue';
 
 export default {
   name: 'App',
 
   components: {
-    
+    LoadingComponent
   },
 
   data: () => ({
@@ -35,9 +37,25 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
-.title {
+
+img {
+  display: block;
+  margin-left: auto; 
+  margin-right: auto;
   margin-top: 21px;
+  max-width: 400px;
+  height: 147px;
+}
+
+@media screen and (max-width: 500px) {
+  img {
+  display: block;
+  margin-left: auto; 
+  margin-right: auto;
+  margin-top: 27px;
+  max-width: 200px;
+  height: 73.5px;
+  }
 }
 </style>
