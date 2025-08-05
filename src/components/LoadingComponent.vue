@@ -6,7 +6,13 @@
  
 <script>
 export default {
-    name: 'LoadingComponent'
+    name: 'LoadingComponent',
+    props: {
+        isLoading: {
+            type: Boolean,
+            default: false
+        }
+    }
 }
 </script>
  
@@ -35,10 +41,8 @@ body {
 img {
     max-width: 200px;
     max-height: 200px;
-}
- 
-@media screen and (max-width: 500px) {
-    img {
+
+    @media screen and (max-width: 1023px) {
         max-width: 100px;
         max-height: 100px;
     }

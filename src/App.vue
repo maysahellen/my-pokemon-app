@@ -46,16 +46,16 @@ img {
   margin-top: 21px;
   max-width: 400px;
   height: 147px;
-}
 
-@media screen and (max-width: 500px) {
-  img {
-  display: block;
-  margin-left: auto; 
-  margin-right: auto;
-  margin-top: 27px;
-  max-width: 200px;
-  height: 73.5px;
+  @media screen and (max-width: 1000px) {
+      display: block;
+      margin-left: auto; 
+      margin-right: auto;
+      margin-top: 27px;
+      max-width: 200px;
+      height: 73.5px;
   }
 }
+
+
 </style>

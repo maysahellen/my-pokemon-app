@@ -31,7 +31,7 @@ describe('Given router', () => {
         });
 
         it('Then the mode is history', () => {
-            expect(router.mode).toBe('history');
+            expect(router.options.mode).toBe('history');
         });
     });
     
