@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img src="./assets/image 1.svg" alt="title">
-    <loading-component/>
+    <ListComponent/>
     <router-view></router-view>
     <!-- <div v-for="pokemon in pokemons" :key="pokemon.name">
       {{ pokemon.name }}
@@ -11,13 +11,15 @@
 
 <script>
 import { callApi } from './gateways/gateway';
-import LoadingComponent from './components/LoadingComponent.vue';
+//import LoadingComponent from './components/LoadingComponent.vue';
+import ListComponent from './components/ListComponent.vue';
 
 export default {
   name: 'App',
 
   components: {
-    LoadingComponent
+    //LoadingComponent
+    ListComponent
   },
 
   data: () => ({
