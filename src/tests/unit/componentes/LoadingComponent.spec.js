@@ -24,5 +24,9 @@ describe('Given LoadingComponent', () => {
         it('Then the default of the isLoading prop is false', () => {
             expect(wrapper.props().isLoading).toBe(false);
         });
+
+        it('Then there must be a loading image in the data', () => {
+            expect(wrapper.vm.loadingImage).toBe(require('../../../assets/loading_gray.gif'));
+        });
     });
 });

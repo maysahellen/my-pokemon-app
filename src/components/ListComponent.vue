@@ -8,17 +8,14 @@
 </template>
  
 <script>
-import { callApi } from '@/gateways/gateway';
-
 export default {
   name: 'ListComponent',
 
-  data: () => ({
-    pokemons: []
-  }),
-
-  async mounted (){
-    this.pokemons = await callApi();
+  props: {
+    pokemons: {
+      type: Array,
+      required: true
+    }
   },
 
   methods: {
@@ -47,6 +44,7 @@ body {
     /* serve pro tamanho inicial do site ser o tamanho da tela */
     height: 100vh;
 }
+
 
 #cards {
     display: grid;

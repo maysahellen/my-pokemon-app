@@ -1,6 +1,6 @@
 <template>
     <div class="loading">
-        <img src="../assets/loading_gray.gif" alt="loading">
+        <img :src="loadingImage" alt="loading">
     </div>
 </template>
  
@@ -11,6 +11,11 @@ export default {
         isLoading: {
             type: Boolean,
             default: false
+        }
+    },
+    data() {
+        return {
+            loadingImage: require('../assets/loading_gray.gif')
         }
     }
 }
