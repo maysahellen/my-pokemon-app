@@ -13,11 +13,9 @@ export default {
             default: false
         }
     },
-    data() {
-        return {
-            loadingImage: require('../assets/loading_gray.gif')
-        }
-    }
+    data: () => ({
+        loadingImage: require('../assets/loading_gray.gif')
+    })
 }
 </script>
  

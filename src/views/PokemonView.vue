@@ -1,26 +1,27 @@
 <template>
     <div>
-        <img src="../assets/image 1.svg" alt="title">
+        <img :src="titleImage" alt="title">
         <!-- <ListComponent :pokemons="pokemons" /> -->
-         <LoadingComponent />
+        <LoadingComponent />
     </div>
 </template>
 
 <script>
 import { callApi } from '@/gateways/gateway';
 import LoadingComponent from '@/components/LoadingComponent.vue';
-//import ListComponent from '@/components/ListComponent.vue';
+// import ListComponent from '@/components/ListComponent.vue';
 
 export default {
     name: 'PokemonView',
 
     components: {
         LoadingComponent
-        //ListComponent
+        // ListComponent
     },
 
     data: () => ({
-        pokemons: []
+        pokemons: [],
+        titleImage: require('../assets/image 1.svg')
     }),
 
     async mounted(){

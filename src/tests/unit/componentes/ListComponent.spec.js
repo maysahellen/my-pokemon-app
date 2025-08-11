@@ -6,30 +6,32 @@ describe('Given ListComponent', () => {
     describe('When the component is rendered', () => {
 
         let wrapper;
+        let pokemonsProp;
         
         beforeEach(() => {
             wrapper = shallowMount(ListComponent, {
-                props: {  // Passando a prop pokemons como um array vazio
+                propsData: {
                     pokemons: []
                 }
             });
+            pokemonsProp = wrapper.vm.$options.props.pokemons;
         });
         
         it('Then the name is ListComponent', () => {
             expect(wrapper.vm.$options.name).toBe('ListComponent');
-        })
+        });
 
         it('Then the type of the pokemons prop is array', () => {
-            expect(Array.isArray(wrapper.props().pokemons)).toBe(true);
-        })
+            expect(pokemonsProp.type).toBe(Array);
+        });
 
-        it('Then the pokemons must be true', () => {
-            expect(wrapper.props().pokemons).toEqual([]);
-        })
+        it('Then the pokemons must be required', () => {
+            expect(pokemonsProp.required).toBe(true);
+        });
 
         it('Then the getId must return the id', () => {
             expect(wrapper.vm.getId({ url: 'https://pokeapi.co/api/v2/pokemon/25/' })).toBe('25');
-        })
+        });
 
-    })
-})
+    });
+});

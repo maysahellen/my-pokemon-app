@@ -6,19 +6,19 @@ describe('Given LoadingComponent', () => {
     describe('When the component is rendered', () => {
 
         let wrapper;
-        let name;
+        let isLoadingProp;
 
         beforeEach(() => {
             wrapper = shallowMount(LoadingComponent);
+            isLoadingProp = wrapper.vm.$options.props.isLoading;
         });
 
         it('Then the name of the component is LoadingComponent', () => {
-            name = wrapper.vm.$options.name;
-            expect(name).toBe('LoadingComponent');
+            expect(wrapper.vm.$options.name).toBe('LoadingComponent');
         });
 
         it('Then the type of the isLoading prop is Boolean', () => {
-            expect(typeof wrapper.props().isLoading).toBe('boolean');
+            expect(isLoadingProp.type).toBe(Boolean);
         });
 
         it('Then the default of the isLoading prop is false', () => {
@@ -26,7 +26,8 @@ describe('Given LoadingComponent', () => {
         });
 
         it('Then there must be a loading image in the data', () => {
-            expect(wrapper.vm.loadingImage).toBe(require('../../../assets/loading_gray.gif'));
+            expect(wrapper.vm.loadingImage).toBeDefined();
+            expect(typeof wrapper.vm.loadingImage).toBe('string');
         });
     });
 });

@@ -15,7 +15,8 @@ module.exports = {
     '^.+\\.jsx?$': 'babel-jest'
   },
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1'
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '\\.(gif|jpg|jpeg|png|svg)$': '<rootDir>/src/tests/__mocks__/fileMock.js'
   },
   testMatch: [
     '**/src/tests/**/*.spec.(js|jsx|ts|tsx)', // Ajuste para cobrir seus testes

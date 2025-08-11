@@ -45,7 +45,6 @@ body {
     height: 100vh;
 }
 
-
 #cards {
     display: grid;
     grid-template-columns: repeat(3, 200px);
