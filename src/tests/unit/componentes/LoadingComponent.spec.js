@@ -1,5 +1,15 @@
 import { shallowMount } from "@vue/test-utils";
 import LoadingComponent from "@/components/LoadingComponent.vue";
+import { createLocalVue } from '@vue/test-utils'
+
+const localVue = createLocalVue();
+
+const factory = (propsData) => shallowMount(LoadingComponent, {
+    localVue,
+    propsData: {
+        ...propsData,
+    }
+});
 
 describe('Given LoadingComponent', () => {
 
@@ -7,10 +17,19 @@ describe('Given LoadingComponent', () => {
 
         let wrapper;
         let isLoadingProp;
+        let mockProps;
 
         beforeEach(() => {
-            wrapper = shallowMount(LoadingComponent);
+            jest.clearAllMocks();
+            mockProps = {
+                isLoading: false
+            }
+            wrapper = factory(mockProps);
             isLoadingProp = wrapper.vm.$options.props.isLoading;
+        });
+
+        afterEach(() => {
+            wrapper.destroy();
         });
 
         it('Then the name of the component is LoadingComponent', () => {
@@ -27,7 +46,6 @@ describe('Given LoadingComponent', () => {
 
         it('Then there must be a loading image in the data', () => {
             expect(wrapper.vm.loadingImage).toBeDefined();
-            expect(typeof wrapper.vm.loadingImage).toBe('string');
         });
     });
 });

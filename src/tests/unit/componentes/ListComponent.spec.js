@@ -1,20 +1,35 @@
 import { shallowMount } from "@vue/test-utils";
 import ListComponent from "@/components/ListComponent.vue";
+import { createLocalVue } from '@vue/test-utils'
+
+const localVue = createLocalVue();
+
+const factory = (propsData) => shallowMount(ListComponent, {
+    localVue,
+    propsData: {
+        ...propsData,
+    }
+});
 
 describe('Given ListComponent', () => {
 
     describe('When the component is rendered', () => {
 
         let wrapper;
+        let mockProps;
         let pokemonsProp;
         
         beforeEach(() => {
-            wrapper = shallowMount(ListComponent, {
-                propsData: {
-                    pokemons: []
-                }
-            });
-            pokemonsProp = wrapper.vm.$options.props.pokemons;
+            jest.clearAllMocks();
+            mockProps = {
+                pokemons: []
+            }
+            wrapper = factory(mockProps);
+            pokemonsProp = wrapper.vm.$options.props.pokemons
+        });
+
+        afterEach(() => {
+            wrapper.destroy();
         });
         
         it('Then the name is ListComponent', () => {
@@ -32,6 +47,5 @@ describe('Given ListComponent', () => {
         it('Then the getId must return the id', () => {
             expect(wrapper.vm.getId({ url: 'https://pokeapi.co/api/v2/pokemon/25/' })).toBe('25');
         });
-
     });
 });
