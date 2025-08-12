@@ -1,5 +1,5 @@
 <template>
-    <div class="loading">
+    <div class="loading" v-if="isLoading">
         <img :src="loadingImage" alt="loading">
     </div>
 </template>

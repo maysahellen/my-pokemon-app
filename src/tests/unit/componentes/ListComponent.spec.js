@@ -1,6 +1,5 @@
-import { shallowMount } from "@vue/test-utils";
+import { shallowMount, createLocalVue } from '@vue/test-utils';
 import ListComponent from "@/components/ListComponent.vue";
-import { createLocalVue } from '@vue/test-utils'
 
 const localVue = createLocalVue();
 
