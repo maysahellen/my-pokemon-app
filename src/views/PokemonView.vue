@@ -2,21 +2,24 @@
     <div>
         <img :src="titleImage" alt="title">
         <!-- <ListComponent :pokemons="pokemons" /> -->
-        <LoadingComponent />
+        <!-- <LoadingComponent /> -->
+         <ErrorComponent />
     </div>
 </template>
 
 <script>
 import { callApi } from '@/gateways/gateway';
-import LoadingComponent from '@/components/LoadingComponent.vue';
+// import LoadingComponent from '@/components/LoadingComponent.vue';
 // import ListComponent from '@/components/ListComponent.vue';
+import ErrorComponent from '@/components/ErrorComponent.vue';
 
 export default {
     name: 'PokemonView',
 
     components: {
-        LoadingComponent
+        // LoadingComponent
         // ListComponent
+        ErrorComponent
     },
 
     data: () => ({
