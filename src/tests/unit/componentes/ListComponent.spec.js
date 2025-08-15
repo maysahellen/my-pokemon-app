@@ -1,5 +1,5 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
-import ListComponent from "@/components/ListComponent.vue";
+import ListComponent from "../../../components/ListComponent.vue";
 
 const localVue = createLocalVue();
 
@@ -40,10 +40,13 @@ describe('Given ListComponent', () => {
         it('Then the pokemons must be required', () => {
             expect(wrapper.vm.$options.props.pokemons.required).toBe(true);
         });
+    });
 
-        describe('And the function getId is called', () => {
+    describe('When validate methods', () => {
 
-            it('Then the getId must return the id', () => {
+        describe('And getId is called', () => {
+            
+            it('Then the getId should return the id', () => {
                 expect(wrapper.vm.getId({ url: 'https://pokeapi.co/api/v2/pokemon/25/' })).toBe('25');
             });
         });

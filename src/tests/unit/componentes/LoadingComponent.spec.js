@@ -1,5 +1,5 @@
 import { shallowMount } from "@vue/test-utils";
-import LoadingComponent from "@/components/LoadingComponent.vue";
+import LoadingComponent from "../../../components/LoadingComponent.vue";
 import { createLocalVue } from '@vue/test-utils'
 
 const localVue = createLocalVue();
@@ -13,24 +13,22 @@ const factory = (propsData) => shallowMount(LoadingComponent, {
 
 describe('Given LoadingComponent', () => {
 
-            let wrapper;
-        let isLoadingProp;
-        let mockProps;
+    let wrapper;;
+    let mockProps;
 
-        beforeEach(() => {
-            jest.clearAllMocks();
-            mockProps = {
-                isLoading: false
-            }
-            wrapper = factory(mockProps);
-        });
+    beforeEach(() => {
+        jest.clearAllMocks();
+        mockProps = {
+            isLoading: false
+        }
+        wrapper = factory(mockProps);
+    });
 
-        afterEach(() => {
-            wrapper.destroy();
-        });
+    afterEach(() => {
+        wrapper.destroy();
+    });
 
     describe('When the component is rendered', () => {
-
 
         it('Then the name of the component is LoadingComponent', () => {
             expect(wrapper.vm.$options.name).toBe('LoadingComponent');
