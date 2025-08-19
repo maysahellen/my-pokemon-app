@@ -23,20 +23,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 @font-face {
     font-family: 'Goldman';
     src: url('@/assets/Goldman/Goldman-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-}
-
-body {
-    background-color: #F13F07;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
-    height: 100vh;
 }
 
 .error {

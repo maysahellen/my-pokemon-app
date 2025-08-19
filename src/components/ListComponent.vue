@@ -26,23 +26,12 @@ export default {
 };
 </script>
  
-<style>
-
+<style scoped lang="scss">
 @font-face {
     font-family: 'Goldman';
     src: url('@/assets/Goldman/Goldman-Bold.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-}
-
-body {
-    background-color: #F13F07;
-    box-sizing: border-box;
-    /* tira o espacamento padrao do site */
-    padding: 0;
-    margin: 0;
-    /* serve pro tamanho inicial do site ser o tamanho da tela */
-    height: 100vh;
 }
 
 #cards {

@@ -34,6 +34,14 @@ export default {
 </script>
 
 <style>
+body {
+    background-color: #F13F07;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+}
+
 img {
   display: block;
   margin-left: auto; 

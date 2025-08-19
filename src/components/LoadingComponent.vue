@@ -19,16 +19,7 @@ export default {
 }
 </script>
  
-<style>
-body {
-    background-color: #F13F07;
-    /* tira o espacamento padrao do site */
-    padding: 0;
-    margin: 0;
-    /* serve pro tamanho inicial do site ser o tamanho da tela */
-    height: 100vh;
-}
- 
+<style scoped lang="scss">
 .loading {
     /* centraliza a div */
     position: absolute;
