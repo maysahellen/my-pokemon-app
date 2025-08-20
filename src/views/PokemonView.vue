@@ -1,35 +1,53 @@
 <template>
     <div>
         <img :src="titleImage" alt="title">
-        <!-- <ListComponent :pokemons="pokemons" /> -->
-        <!-- <LoadingComponent /> -->
-         <ErrorComponent />
+        <ErrorComponent v-if="isError" :isError="true"/>
+        <ListComponent v-if="pokemons && !isLoading && !isError" :pokemons="pokemons"/>
+        <LoadingComponent v-if="isLoading && !isError" :isLoading="isLoading"/>
     </div>
 </template>
 
 <script>
 import { callApi } from '@/gateways/gateway';
-// import LoadingComponent from '@/components/LoadingComponent.vue';
-// import ListComponent from '@/components/ListComponent.vue';
+import LoadingComponent from '@/components/LoadingComponent.vue';
+import ListComponent from '@/components/ListComponent.vue';
 import ErrorComponent from '@/components/ErrorComponent.vue';
 
 export default {
     name: 'PokemonView',
 
     components: {
-        // LoadingComponent
-        // ListComponent
+        LoadingComponent,
+        ListComponent,
         ErrorComponent
     },
 
     data: () => ({
         pokemons: [],
-        titleImage: require('../assets/image 1.svg')
+        titleImage: require('../assets/image 1.svg'),
+        isLoading: false,
+        isError: false
     }),
 
-    async mounted(){
-        this.pokemons = await callApi();
-    } 
+    methods: {
+        async all() {
+            this.isLoading = true;
+            this.isError = false;
+            try {
+                this.pokemons = await callApi();
+            }
+            catch (error) {
+                this.isError = true;
+            }
+            finally {
+                this.isLoading = false;
+            }
+        }
+    },
+
+    mounted() {
+        this.all();
+    }
 }
 </script>
 

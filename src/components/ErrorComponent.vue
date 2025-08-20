@@ -1,12 +1,12 @@
 <template>
-    <div class="error">
+    <div class="error" v-if="isError">
         <p>{{ errorMessage }}</p>
         <div class="tryAgainButton">
-            <button>{{ buttonText }}</button>
+            <button v-on:click="all">{{ buttonText }}</button>
         </div>
     </div>
 </template>
- 
+
 <script>
 export default {
     name: 'ErrorComponent',
