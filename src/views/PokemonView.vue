@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import { callApi } from '@/gateways/gateway';
-import LoadingComponent from '@/components/LoadingComponent.vue';
-import ListComponent from '@/components/ListComponent.vue';
-import ErrorComponent from '@/components/ErrorComponent.vue';
+import { callApi } from '../gateways/gateway';
+import LoadingComponent from '../components/LoadingComponent.vue';
+import ListComponent from '../components/ListComponent.vue';
+import ErrorComponent from '../components/ErrorComponent.vue';
 
 export default {
     name: 'PokemonView',
@@ -30,7 +30,7 @@ export default {
     }),
 
     methods: {
-        async all() {
+        async fetchPokemons() {
             this.isLoading = true;
             this.isError = false;
             try {
@@ -46,7 +46,7 @@ export default {
     },
 
     mounted() {
-        this.all();
+        this.fetchPokemons();
     }
 }
 </script>

@@ -1,3 +1,4 @@
+// @ts-nocheck
 import Vue from 'vue'
 import Router from 'vue-router'
 import PokemonView from '../src/views/PokemonView.vue';
