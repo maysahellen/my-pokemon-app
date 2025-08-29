@@ -11,10 +11,17 @@ jest.mock('../../../gateways/gateway', () => ({
 }));
  
 describe("Given PokemonView", () => {
+
+    let wrapper;
+
+    beforeEach(() => {
+        jest.clearAllMocks();
+        wrapper = factory();
+    });
+ 
  
     describe('When the component is rendered', () => {
 
-        let wrapper;
         let fetchPokemonsSpy;
  
         beforeEach(() => {
@@ -55,6 +62,7 @@ describe("Given PokemonView", () => {
             expect(PokemonView.data().isError).toBe(false);
         });
 
+        // outro when pro mounted
         it('Then fetchPokemons is called', () => {
             expect(fetchPokemonsSpy).toHaveBeenCalled();
         });
@@ -85,6 +93,20 @@ describe("Given PokemonView", () => {
     });
  
     describe('When validate the method fetchPokemons', () => {
+
+        describe('And the call of fetchPokemons starts', () => {
+
+            // colocar um beforeeach no given so pra limpar o mock
+            beforeEach(() => {
+                    wrapper.vm.isLoading = false;
+                    callApi.mockImplementation(() => new Promise(() => {}));
+                    wrapper.vm.fetchPokemons();
+                });
+
+            it('Then isLoading is true in the beggining', () => {
+                expect(wrapper.vm.isLoading).toBe(true);
+            });
+        });
  
         describe('And the call of api is error', () => {
 
@@ -130,6 +152,10 @@ describe("Given PokemonView", () => {
             it('Then the pokemons should be an array with pokemon data', () => {
                 expect(wrapper.vm.pokemons).toEqual(mockData);
             }); 
+
+            it('Then isLoading is false', () => {
+                expect(wrapper.vm.isLoading).toBe(false);
+            });
         });
     });
 
@@ -154,4 +180,3 @@ describe("Given PokemonView", () => {
         });           
     });
 });
-

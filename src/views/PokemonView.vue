@@ -38,7 +38,6 @@ export default {
     methods: {
         async fetchPokemons() {
             this.isLoading = true;
-            this.isError = false;
             try {
                 this.pokemons = await callApi();
                 this.isLoading = false;
