@@ -1,8 +1,8 @@
 <template>
     <div class="error" v-if="isError">
         <p>{{ errorMessage }}</p>
-        <div class="tryAgainButton">
-            <button v-on:click="all">{{ buttonText }}</button>
+        <div class="try-again-button">
+            <button @click="retryFetchPokemons">{{ buttonText }}</button>
         </div>
     </div>
 </template>
@@ -20,6 +20,11 @@ export default {
         errorMessage: 'Não foi possível carregar os pokemóns. Tente novamente',
         buttonText: 'Tentar de novo'
     }),
+    methods: {
+        retryFetchPokemons () {
+            this.$emit('retry');
+        }
+    }
 };
 </script>
 
@@ -54,7 +59,7 @@ export default {
     text-align: center;
 }
 
-.tryAgainButton {
+.try-again-button {
     margin: 22px auto 0;
 
     @media screen and (max-width: 1000px) {
@@ -62,7 +67,7 @@ export default {
     } 
 }
 
-.tryAgainButton button {
+.try-again-button button {
     background-color: #D9D9D9;
     max-width: 616px;
     max-height: 53px;

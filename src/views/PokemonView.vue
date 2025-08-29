@@ -1,8 +1,8 @@
 <template>
     <div>
         <img :src="titleImage" alt="title">
-        <ErrorComponent v-if="isError" :isError="true"/>
-        <ListComponent v-if="pokemons && !isLoading && !isError" :pokemons="pokemons"/>
+        <ErrorComponent v-if="isError" :isError="true" @retry="handleTryAgain"/>
+        <ListComponent v-if="showPokemons" :pokemons="pokemons"/>
         <LoadingComponent v-if="isLoading && !isError" :isLoading="isLoading"/>
     </div>
 </template>
@@ -29,19 +29,28 @@ export default {
         isError: false
     }),
 
+    computed: {
+        showPokemons() {
+            return this.pokemons && !this.isLoading && !this.isError;
+        }
+    },
+
     methods: {
         async fetchPokemons() {
             this.isLoading = true;
             this.isError = false;
             try {
                 this.pokemons = await callApi();
+                this.isLoading = false;
             }
             catch (error) {
                 this.isError = true;
-            }
-            finally {
                 this.isLoading = false;
             }
+        },
+
+        handleTryAgain () {
+            this.fetchPokemons();
         }
     },
 

@@ -49,4 +49,28 @@ describe('Given ErrorComponent', () => {
             expect(wrapper.vm.buttonText).toBe('Tentar de novo');
         });
     });
+
+    describe('When validate methods', () => {
+
+        beforeEach(() => {
+            jest.clearAllMocks();
+            mockProps = {
+                isError: false
+            }
+            wrapper = factory(mockProps);
+            wrapper.vm.retryFetchPokemons();
+        });
+
+        afterEach(() => {
+            wrapper.destroy();
+        });
+
+        describe('And retryFetchPokemons is called', () => {
+
+            it('then retryFetchPokemons should issue an emit', () => {
+                expect(wrapper.emitted().retry).toBeTruthy();
+            });
+        });
+
+    });
 });

@@ -40,6 +40,7 @@ export default {
     gap: 16px 8px; /* gap: linha coluna */
     justify-content: center;
     margin-top: 42px;
+    padding-bottom: 42px;
 
     @media screen and (max-width: 1000px) {
         grid-template-columns: repeat(3, 100px);
