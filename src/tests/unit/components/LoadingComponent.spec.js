@@ -38,7 +38,7 @@ describe('Given LoadingComponent', () => {
             expect(wrapper.vm.$options.props.isLoading.type).toBe(Boolean);
         });
 
-        it('Then the isLoading should be false', () => {
+        it('Then the isLoading is false', () => {
             expect(wrapper.vm.$options.props.isLoading.default).toBe(false);
         });
 

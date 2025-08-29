@@ -18,23 +18,18 @@ describe("Given PokemonView", () => {
         jest.clearAllMocks();
         wrapper = factory();
     });
- 
- 
-    describe('When the component is rendered', () => {
 
-        let fetchPokemonsSpy;
+    afterEach(() => {
+        wrapper.destroy();
+    });
+  
+    describe('When the component is rendered', () => {
  
         beforeEach(() => {
-            jest.clearAllMocks();
-            fetchPokemonsSpy = jest.spyOn(PokemonView.methods, 'fetchPokemons');
-            wrapper = factory();
+            fetchPokemonsSpy = jest.spyOn(PokemonView.methods, 'fetchPokemons');            
         });
  
-        afterEach(() => {
-            wrapper.destroy();
-        });
-
-        it('Then the name of the component should be PokemonView', () => {
+        it('Then the name of the component is PokemonView', () => {
             expect(wrapper.vm.$options.name).toBe('PokemonView');
         });
 
@@ -61,8 +56,16 @@ describe("Given PokemonView", () => {
         it('Then the isError is false', () => {
             expect(PokemonView.data().isError).toBe(false);
         });
+    });
 
-        // outro when pro mounted
+    describe('When validate computed', () => {
+
+        let fetchPokemonsSpy;
+ 
+        beforeEach(() => {
+            fetchPokemonsSpy = jest.spyOn(PokemonView.methods, 'fetchPokemons');            
+        });
+
         it('Then fetchPokemons is called', () => {
             expect(fetchPokemonsSpy).toHaveBeenCalled();
         });
@@ -70,23 +73,12 @@ describe("Given PokemonView", () => {
 
       describe('When validate computed', () => {
 
-        let wrapper;
- 
-        beforeEach(() => {
-            jest.clearAllMocks();
-            wrapper = factory();
-        });
- 
-        afterEach(() => {
-            wrapper.destroy();
-        });
-
         test.each([
             { pokemons: ['Pikachu'], isLoading: false, isError: false, expected: true },
             { pokemons: ['Pikachu'], isLoading: true, isError: false, expected: false },
             { pokemons: ['Pikachu'], isLoading: false, isError: true, expected: false },
             { pokemons: [], isLoading: true, isError: true, expected: false },
-        ])('When pokemons: $pokemons, isLoading: $isLoading, isError: $isError, then showPokemons should be $expected', ({ pokemons, isLoading, isError, expected }) => {
+        ])('When pokemons: $pokemons, isLoading: $isLoading, isError: $isError, then showPokemons is $expected', ({ pokemons, isLoading, isError, expected }) => {
             wrapper.setData({ pokemons, isLoading, isError });
             expect(wrapper.vm.showPokemons).toBe(expected);
         });
@@ -96,7 +88,6 @@ describe("Given PokemonView", () => {
 
         describe('And the call of fetchPokemons starts', () => {
 
-            // colocar um beforeeach no given so pra limpar o mock
             beforeEach(() => {
                     wrapper.vm.isLoading = false;
                     callApi.mockImplementation(() => new Promise(() => {}));
@@ -110,24 +101,16 @@ describe("Given PokemonView", () => {
  
         describe('And the call of api is error', () => {
 
-            let wrapper;
-
             beforeEach( () => {
-                jest.clearAllMocks();
-                wrapper = factory();
                 callApi.mockRejectedValue(new Error('error'));
                 wrapper.vm.fetchPokemons();
             });
- 
-            afterEach(() => {
-                wrapper.destroy();
-            });
 
-            it('Then the isError should be true', () => {
+            it('Then the isError is true', () => {
                 expect(wrapper.vm.isError).toBe(true);
             });
 
-            it('Then the isLoading should be false after error', () => {
+            it('Then the isLoading is false after error', () => {
                 expect(wrapper.vm.isLoading).toBe(false);
             });
         });
@@ -135,21 +118,14 @@ describe("Given PokemonView", () => {
         describe('And the call of api is sucess', () => {
  
             let mockData;
-            let wrapper;
  
             beforeEach(() => {
-                jest.clearAllMocks();
-                wrapper = factory();
                 mockData = [{ name: 'Pikachu' }];
                 callApi.mockResolvedValue(mockData);
                 wrapper.vm.fetchPokemons();
             });
  
-            afterEach(() => {
-                wrapper.destroy();
-            });
- 
-            it('Then the pokemons should be an array with pokemon data', () => {
+            it('Then the pokemons is an array with pokemon data', () => {
                 expect(wrapper.vm.pokemons).toEqual(mockData);
             }); 
 
@@ -161,21 +137,14 @@ describe("Given PokemonView", () => {
 
     describe('When validade the method handleTryAgain', () => {
 
-        let wrapper;
         let fetchPokemonsSpy;
         
         beforeEach(async () => {
-            jest.clearAllMocks();
-            wrapper = factory();
             fetchPokemonsSpy = jest.spyOn(wrapper.vm, 'fetchPokemons');
             await wrapper.vm.handleTryAgain();
         });
- 
-        afterEach(() => {
-            wrapper.destroy();
-        });
 
-        it('Then fetchPokemons should be called', () => {
+        it('Then fetchPokemons is called', () => {
             expect(fetchPokemonsSpy).toHaveBeenCalled();
         });           
     });

@@ -46,7 +46,7 @@ describe('Given ListComponent', () => {
 
         describe('And getId is called', () => {
             
-            it('Then the getId should return the id', () => {
+            it('Then the getId returns the id', () => {
                 expect(wrapper.vm.getId({ url: 'https://pokeapi.co/api/v2/pokemon/25/' })).toBe('25');
             });
         });

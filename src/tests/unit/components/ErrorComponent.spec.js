@@ -37,7 +37,7 @@ describe('Given ErrorComponent', () => {
             expect(wrapper.vm.$options.props.isError.type).toBe(Boolean);
         });
 
-        it('Then the isError should be false', () => {
+        it('Then the isError is false', () => {
             expect(wrapper.vm.$options.props.isError.default).toBe(false);
         });
 
@@ -67,7 +67,7 @@ describe('Given ErrorComponent', () => {
 
         describe('And retryFetchPokemons is called', () => {
 
-            it('then retryFetchPokemons should issue an emit', () => {
+            it('Then retryFetchPokemons emits an emit', () => {
                 expect(wrapper.emitted().retry).toBeTruthy();
             });
         });
