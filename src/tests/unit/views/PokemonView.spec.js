@@ -146,6 +146,10 @@ describe("Given PokemonView", () => {
 
         it('Then fetchPokemons is called', () => {
             expect(fetchPokemonsSpy).toHaveBeenCalled();
-        });           
+        });
+        
+        it('Then isError is false', () => {
+            expect(wrapper.vm.isError).toBe(false);
+        }); 
     });
 });
