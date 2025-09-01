@@ -49,6 +49,7 @@ export default {
         },
 
         handleTryAgain () {
+            this.isError = false;
             this.fetchPokemons();
         }
     },
